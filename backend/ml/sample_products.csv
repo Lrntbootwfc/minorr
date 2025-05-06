@@ -1,0 +1,6 @@
+product_id,product_name,base_price,demand_level,season,competitor_price,final_price
+101,Cotton Shirt,500,high,summer,450,540
+102,Woolen Jacket,1200,low,winter,1300,1100
+103,Linen Pants,700,medium,summer,650,720
+104,Denim Jeans,900,high,monsoon,950,980
+105,Sweatshirt,800,low,winter,780,760
