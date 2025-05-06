@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,41 +10,86 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // mock auth
-    if (email === 'test@example.com' && password === 'password') {
-      login('mock-token-123'); // save token
-      navigate('/dashboard');
-    } else {
-      alert('Invalid credentials');
-    }
+
+    ///////////////////////////////////////////////
+    // if (email === 'test@example.com' && password === 'password') {
+    //   login('mock-token-123');
+    //   navigate('/dashboard');
+    // } else {
+    //   alert('Invalid credentials');
+    // }
+    //////////////////////////////////////////////
+    
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-blue-50">
-      <form className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm" onSubmit={handleSubmit}>
-        <h2 className="text-2xl font-bold mb-4 text-blue-600 text-center">Login</h2>
+    <div style={styles.container}>
+      <form style={styles.form} onSubmit={handleSubmit}>
+        <h2 style={styles.heading}>Login</h2>
         <input
           type="email"
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-4"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
+          style={styles.input}
         />
         <input
           type="password"
-          className="w-full border border-gray-300 rounded px-3 py-2 mb-4"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+          style={styles.input}
         />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-          Login
-        </button>
+        <button type="submit" style={styles.button}>Login</button>
       </form>
     </div>
   );
+};
+
+const styles = {
+  container: {
+    backgroundColor: '#e6f0ff',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  form: {
+    backgroundColor: '#ffffff',
+    padding: '30px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    width: '100%',
+    maxWidth: '400px',
+  },
+  heading: {
+    fontSize: '28px',
+    marginBottom: '20px',
+    textAlign: 'center',
+    color: '#1a73e8',
+  },
+  input: {
+    width: '100%',
+    padding: '12px',
+    marginBottom: '15px',
+    border: '1px solid #ccc',
+    borderRadius: '6px',
+    fontSize: '16px',
+  },
+  button: {
+    width: '100%',
+    backgroundColor: '#1a73e8',
+    color: '#ffffff',
+    padding: '12px',
+    fontSize: '16px',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+  },
 };
 
 export default Login;

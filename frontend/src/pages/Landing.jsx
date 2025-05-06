@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -13,8 +14,8 @@ const LandingPage = () => {
               <li><a href="#about" style={{ color: '#f0f8ff', textDecoration: 'none', fontSize: '1.2rem' }}>About</a></li>
               <li><a href="#contact" style={{ color: '#f0f8ff', textDecoration: 'none', fontSize: '1.2rem' }}>Contact</a></li>
               <li>
-                <a
-                  href="#signup"
+                <Link
+                  to="/signup"
                   style={{
                     background: '#ff6600',
                     padding: '10px 20px',
@@ -25,7 +26,7 @@ const LandingPage = () => {
                   }}
                 >
                   Sign Up
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -44,8 +45,8 @@ const LandingPage = () => {
         <div>
           <h2 style={{ fontSize: '3rem', marginBottom: '10px' }}>Welcome to PricePilot</h2>
           <p style={{ fontSize: '1.5rem', marginBottom: '20px' }}>Your dynamic pricing solution for smarter sales</p>
-          <a
-            href="#signup"
+          <Link
+            to="/signup"
             style={{
               background: '#ff6600',
               padding: '15px 30px',
@@ -56,7 +57,7 @@ const LandingPage = () => {
             }}
           >
             Get Started
-          </a>
+          </Link>
         </div>
       </section>
 
