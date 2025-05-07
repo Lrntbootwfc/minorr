@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
-const Login = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
 
+
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useUser();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    ///////////////////////////////////////////////
-    // if (email === 'test@example.com' && password === 'password') {
-    //   login('mock-token-123');
-    //   navigate('/dashboard');
-    // } else {
-    //   alert('Invalid credentials');
-    // }
-    //////////////////////////////////////////////
-    
+    // Fake login: checking if email and password are correct
+    if (email === 'test@example.com' && password === 'password123') {
+      login({ email: 'test@example.com', name: 'John Doe' });
+      console.log("Login successful. Redirecting to dashboard..."); 
+      navigate('/dashboard');
+    } else {
+      alert('Invalid credentials');
+    }
   };
+
+
 
   return (
     <div style={styles.container}>
@@ -93,3 +95,30 @@ const styles = {
 };
 
 export default Login;
+
+
+
+
+
+
+
+// const Login = () => {
+//   const navigate = useNavigate();
+//   const { login } = useAuth();
+
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     ///////////////////////////////////////////////
+//     // if (email === 'test@example.com' && password === 'password') {
+//     //   login('mock-token-123');
+//     //   navigate('/dashboard');
+//     // } else {
+//     //   alert('Invalid credentials');
+//     // }
+//     //////////////////////////////////////////////
+    
+//   };

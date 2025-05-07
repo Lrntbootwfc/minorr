@@ -8,14 +8,11 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
+    role: 'customer', // default role
   });
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+
   const navigate = useNavigate();
-  const { login } = useAuth(); 
-
-
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,11 +22,26 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic
-  };
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
 
+      // 🟣 Store token & role
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.role);
+
+      // 🟣 Navigate based on role
+      if (response.data.role === 'admin') {
+        navigate('/admin-dashboard');
+      } else {
+        navigate('/profile');
+      }
+
+    } catch (err) {
+      console.error('Signup failed:', err);
+    }
+  };
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f1f5f9', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', width: '400px', maxWidth: '100%' }}>
@@ -100,6 +112,19 @@ const Signup = () => {
               }}
             />
           </div>
+          <div style={{ marginBottom: '20px' }}>
+  <label htmlFor="role">Role</label>
+  <select
+    id="role"
+    name="role"
+    value={formData.role}
+    onChange={handleChange}
+    required
+  >
+    <option value="customer">Customer</option>
+    <option value="admin">Admin</option>
+  </select> {/* ✅ Proper closing tag */}
+</div>
 
           <button
             type="submit"

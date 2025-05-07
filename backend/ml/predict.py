@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 
 # Load model
-model = joblib.load('backend/ml/pricing_model.pkl')
+model = joblib.load('./pricing_model.pkl')
 
 # Read JSON input from Node.js
 input_data = json.loads(sys.argv[1])
