@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,35 +12,71 @@ function Dashboard() {
   };
 
   // Simulate API response with mock data
+  ////////////////////////////////////////////////////////////////////
+  // useEffect(() => {
+  //   const mockData = [
+  //     {
+  //       id: 1,
+  //       name: "Product 1",
+  //       base_price: 500,
+  //       competitor_price: 520,
+  //       predicted_price: 510,
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Product 2",
+  //       base_price: 1000,
+  //       competitor_price: 980,
+  //       predicted_price: 990,
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "Product 3",
+  //       base_price: 1500,
+  //       competitor_price: 1600,
+  //       predicted_price: 1550,
+  //     },
+  //   ];
+
+  //   // Simulate setting products from API response
+  //   setProducts(mockData);
+  // }, []);
+  ///////////////////////////////////////////////////////////
+
   useEffect(() => {
-    const mockData = [
-      {
-        id: 1,
-        name: "Product 1",
-        base_price: 500,
-        competitor_price: 520,
-        predicted_price: 510,
-      },
-      {
-        id: 2,
-        name: "Product 2",
-        base_price: 1000,
-        competitor_price: 980,
-        predicted_price: 990,
-      },
-      {
-        id: 3,
-        name: "Product 3",
-        base_price: 1500,
-        competitor_price: 1600,
-        predicted_price: 1550,
-      },
-    ];
-
-    // Simulate setting products from API response
-    setProducts(mockData);
+    const fetchPredictions = async () => {
+      const productList = [
+        { id: 1, name: "Product 1", base_price: 500, competitor_price: 520 },
+        { id: 2, name: "Product 2", base_price: 1000, competitor_price: 980 },
+        { id: 3, name: "Product 3", base_price: 1500, competitor_price: 1600 },
+      ];
+  
+      const updatedProducts = await Promise.all(
+        productList.map(async (product) => {
+          try {
+            const response = await fetch("http://localhost:5000/predict_price", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                base_price: product.base_price,
+                competitor_price: product.competitor_price,
+              }),
+            });
+  
+            const data = await response.json();
+            return { ...product, predicted_price: data.predicted_price };
+          } catch (error) {
+            console.error("Prediction error:", error);
+            return { ...product, predicted_price: "Error" };
+          }
+        })
+      );
+  
+      setProducts(updatedProducts);
+    };
+  
+    fetchPredictions();
   }, []);
-
   if (!Array.isArray(products) || products.length === 0) {
     return <div>Loading products...</div>;  // Loading message or a fallback UI
   }
@@ -160,7 +196,8 @@ export default Dashboard;
 //           </div>
 //         ))}
 //       </div>
-//     </div>
+//     </div>zz
+
 //   );
 // }
 

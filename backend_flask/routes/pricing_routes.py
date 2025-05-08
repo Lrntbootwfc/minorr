@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Load the model once
-model_path = os.getenv("MODEL_PATH")
+model_path = os.getenv("MODEL_PATH","ml/pricing_model.pkl")
 model = joblib.load(model_path)
 model = joblib.load('ml/pricing_model.pkl')
 

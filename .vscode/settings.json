@@ -1,0 +1,6 @@
+{
+    "rust-analyzer.workspace.discoverConfig": null,
+    "python.analysis.extraPaths": ["./backend_flask","D:/.vscode/minorr/backend_flask/venv/Lib/site-packages/kaggle/__init__.py"],
+    "python.analysis.indexing": true,
+    "python.analysis.autoSearchPaths": true
+}
