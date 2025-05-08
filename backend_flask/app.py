@@ -14,6 +14,8 @@ model = joblib.load('ml/pricing_model.pkl')
 @app.route('/api/predict_price', methods=['POST'])
 def predict_price():
     data = request.get_json()  # Get input data as JSON
+    if 'base_price' not in data or 'competitor_price' not in data:
+        return jsonify({"error": "Missing input"}), 400 
     features = np.array(data['features']).reshape(1, -1)  # Convert input to numpy array
     prediction = model.predict(features)
     return jsonify({'prediction': prediction[0]})
