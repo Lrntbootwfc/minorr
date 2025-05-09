@@ -8,7 +8,7 @@ from routes.pricing_routes import pricing_bp  # Import pricing routes
 from ml.pricing_data import PricingDataFetcher  # Import the Kaggle integration class
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
-
+from skopt.space import Real
 
 
 app = Flask(__name__)
