@@ -1,6 +1,6 @@
 # backend_flask/app.py
 
-from flask import Flask,request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import numpy as np
@@ -9,16 +9,21 @@ from ml.pricing_data import PricingDataFetcher  # Import the Kaggle integration 
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 from skopt.space import Real
+from datetime import datetime
+import logging
+import os
+
 
 
 app = Flask(__name__)
 CORS(app)
 app.register_blueprint(pricing_bp, url_prefix='/api')
 
+logging.basicConfig(level=logging.INFO) 
 # Initialize components
-model = joblib.load('ml/pricing_model.pkl')
-data_fetcher = PricingDataFetcher()  # Kaggle data fetcher instance
-
+model_path = os.path.join(os.path.dirname(__file__), 'ml/pricing_model.pkl')
+model = joblib.load(model_path)  # Kaggle data fetcher instance
+data_fetcher = PricingDataFetcher()
 # Schedule daily data updates
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=data_fetcher.fetch_latest_data, trigger="cron", hour=2)  # 2 AM daily

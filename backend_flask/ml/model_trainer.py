@@ -1,92 +1,118 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 import numpy as np
-from ml.models.q_learning_model import QLearningOptimizer
-from ml.models.bayesian_optimizer import BayesianOptimizer
-from utils.data_loader import save_to_database  # Importing save function for database
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import joblib
+import os
+import traceback
 
 class ModelTrainer:
-    def __init__(self, data):
-        self.data = data  # Assuming the data passed is a dataframe
-        self.rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
-        self.gbm_model = GradientBoostingRegressor(n_estimators=100, random_state=42)
+    def __init__(self, dataframe, verbose=False):
+        self.df = dataframe
+        self.verbose = verbose
 
+    def log(self, msg):
+        if self.verbose:
+            print(f"[INFO] {msg}")
+
+    def preprocess(self):
+        df = self.df.copy()
+
+    # Drop blank rows
+        df.dropna(inplace=True)
+
+    # Normalize column names
+        df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
+        print("📋 Columns in CSV:", df.columns.tolist())
+
+    # Sanitize price strings if needed
+        df['actual_price'] = df['actual_price'].astype(str).str.replace('[^0-9.]', '', regex=True)
+        df['discounted_price'] = df['discounted_price'].astype(str).str.replace('[^0-9.]', '', regex=True)
+
+    # Convert to numeric
+        df['base_price'] = pd.to_numeric(df['actual_price'], errors='coerce')
+        df['competitor_price'] = pd.to_numeric(df['discounted_price'], errors='coerce')
+
+        print("📊 Before dropna:", df.shape)
+        df = df.dropna(subset=['base_price', 'competitor_price'])
+        print("✅ After dropna:", df.shape)
+
+        df = df[(df['base_price'] > 0) & (df['competitor_price'] > 0)]
+        print("✅ After filtering non-positive:", df.shape)
+
+    # Feature engineering
+        df['price_gap'] = df['base_price'] - df['competitor_price']
+        df['discount_rate'] = df['price_gap'] / df['base_price']
+
+    # Target
+        target = df['base_price'] * (1 - df['discount_rate'] * 0.65)
+        features = df[['base_price', 'competitor_price', 'discount_rate']]
+
+    # Train the RandomForestRegressor to generate 'rf_price' before splitting
+        rf = RandomForestRegressor(n_estimators=100, random_state=42)
+        rf.fit(features, target)  # Fit on the entire feature set
+        rf_preds = rf.predict(features)
+
+    # Add the 'rf_price' and 'bo_signal' columns to the dataframe
+        df['rf_price'] = rf_preds
+        df['bo_signal'] = np.clip(df['discount_rate'] * np.random.uniform(0.9, 1.1, size=len(df)), 0, 1)
+
+        return df[['base_price', 'competitor_price', 'discount_rate', 'rf_price', 'bo_signal']], target
+    
     def run(self, enriched=False):
-        df = self.data.copy()
+        try:
+            self.log("Model training initiated...")
+            df, y = self.preprocess()
 
-        # Feature set update: Added 'inventory' and 'demand'
-        features = ["base_price", "competitor_price", "inventory", "demand"]
+            if df.empty or y.empty:
+                raise ValueError("🚫 No valid data left after preprocessing. Check CSV formatting and price columns.")
 
-        print("Training Random Forest Model...")
-        # 1. Random Forest prediction
-        self.rf_model.fit(df[features], df["final_price"])
-        df['rf_predicted_price'] = self.rf_model.predict(df[features])
+            X_train, X_test, y_train, y_test = train_test_split(df, y, test_size=0.2, random_state=42)
 
-        print("Simulating Q-Learning...")
-        # 2. Q-Learning simulation - Here, we simulate Q-Learning-based price adjustments
-        df['qlearn_optimized'] = self._simulate_q_learning(df['rf_predicted_price'])
+        # Final model trained on enriched features
+            final_model = GradientBoostingRegressor(
+                n_estimators=250, learning_rate=0.08, max_depth=5, random_state=42
+            )
+            final_model.fit(X_train, y_train)
 
-        print("Running Bayesian Optimization...")
-        # 3. Bayesian optimization - apply this optimization to all rows (simplified model)
-        bayes_price = self._run_bayesian_optimization(df)
-        df['bayes_optimized'] = bayes_price
+            preds_test = final_model.predict(X_test)
+            mse = mean_squared_error(y_test, preds_test)
+            rmse = np.sqrt(mse)
+            self.log(f"📈 Model evaluation: MSE = {mse:.2f}, RMSE = {rmse:.2f}")
 
-        # Stacking model outputs for GBM input
-        stacked_features = ["rf_predicted_price", "qlearn_optimized", "bayes_optimized"]
+            model_path = os.path.join(os.path.dirname(__file__), "pricing_model.pkl")
+            joblib.dump(final_model, model_path)
+            self.log(f"✅ Model successfully saved at: {model_path}")
 
-        # 4. Gradient Boosting Machine (GBM) on stacked predictions
-        print("Training Gradient Boosting Machine Model...")
-        self.gbm_model.fit(df[stacked_features], df["final_price"])
+        # Add predicted final prices to the dataframe
+            df['final_optimized_price'] = final_model.predict(df)
 
-        # 5. Predict using GBM model
-        df['final_optimized_price'] = self.gbm_model.predict(df[stacked_features])
+            return df
 
-        # Save the results back into the database
-        save_to_database(df, table_name="optimized_pricing_data")
+        except Exception as e:
+            print("❌ Error occurred during model training:")
+            traceback.print_exc()
+            return None  # Prevent further indexing if failure happens
+ # Prevent further indexing if failure happens
 
-        print("Model training complete. Final optimized price predictions:")
-        print(df[['rf_predicted_price', 'qlearn_optimized', 'bayes_optimized', 'final_optimized_price']].head())
+# Entry point for CLI
+if __name__ == "__main__":
+    print("=== Model Training Script ===")
+    
+    data_path = os.path.join(os.path.dirname(__file__), "../scripts/data/raw/amazon.csv")
+    
+    if not os.path.exists(data_path):
+        raise FileNotFoundError(f"❌ Dataset not found at: {data_path}\nCheck filename or path.")
+    
+    df = pd.read_csv(data_path)
+    trainer = ModelTrainer(df, verbose=True)
 
-        return df
+    print("⏳ Running training...")
+    enriched_df = trainer.run(enriched=True)
 
-    def _simulate_q_learning(self, rf_predictions):
-        """
-        Simulate Q-Learning model-based price adjustment. This function is a placeholder.
-        Ideally, you'd use a QLearningOptimizer class, which applies reinforcement learning techniques.
-        """
-        optimizer = QLearningOptimizer()
-        return optimizer.optimize_prices(rf_predictions)
-
-    def _run_bayesian_optimization(self, df):
-        """
-        Simple placeholder for Bayesian Optimization. In practice, you would apply your Bayesian
-        Optimization logic to fine-tune prices based on the features provided.
-        """
-        optimizer = BayesianOptimizer(df)
-        return optimizer.optimize()
-
-
-
-
-
-
-
-
-# import pandas as pd
-# from sklearn.ensemble import GradientBoostingRegressor
-# import joblib
-
-# print("Loading data...")  # Added print
-# data = pd.read_csv("sample_products.csv")
-
-# print("Preparing features and labels...")  # Added print
-# X = data[["base_price", "competitor_price"]]
-# y = data["final_price"]
-
-# print("Training model...")  # Added print
-# model = GradientBoostingRegressor()
-# model.fit(X, y)
-
-# print("Saving the model...")  # Added print
-# joblib.dump(model, "pricing_model.pkl")
-# print("Model saved as pricing_model.pkl")
+    if enriched_df is not None:
+        print("✅ Model training complete.")
+        print(enriched_df[['base_price', 'competitor_price', 'final_optimized_price']].head())
+    else:
+        print("⚠️ Model training failed. Check logs above.")

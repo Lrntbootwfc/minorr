@@ -1,3 +1,4 @@
+#pricing_data.py
 import os
 from kaggle.api.kaggle_api_extended import KaggleApi
 import pandas as pd
@@ -52,7 +53,7 @@ class PricingDataFetcher:
 
                 # Simulated columns for pricing logic
                 df['inventory'] = 100  # Assume default initial inventory
-                df['demand'] = df['number_of_pieces_sold_(monthly)']
+                df['demand'] = df['rating_count']
                 df['base_price'] = df['mrp']
                 df['competitor_price'] = df['selling_price'] * 1.1  # Estimate
                 df['final_price'] = df['selling_price']
