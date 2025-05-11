@@ -43,6 +43,15 @@ def predict_price():
         if not all(field in data for field in required_fields):
             return jsonify({"error": "Missing required fields", "required": required_fields}), 400
         
+    #     # Auto-fill competitor price if missing
+    # if 'competitor_price' not in data:
+    #     data['competitor_price'] = data['base_price'] * 0.9  # 10% discount
+    
+    # # Auto-calculate demand based on inventory status
+    # if 'demand_level' not in data:
+    #     inventory_status = data.get('inventory_status', 'In Stock')
+    #     data['demand_level'] = 1.2 if inventory_status == "In Stock" else 0.8
+        
         # Prepare features array
         features = np.array([
             data['base_price'],
@@ -68,6 +77,8 @@ def predict_price():
         app.logger.error(f"Prediction error: {str(e)}")
         return jsonify({"error": "Prediction failed", "details": str(e)}), 500
 
+
+
 @app.route('/refresh_data', methods=['POST'])
 def refresh_data():
     """Manual trigger for data refresh"""
@@ -77,9 +88,15 @@ def refresh_data():
             return jsonify({"status": "Data refreshed successfully"})
         return jsonify({"error": "Data refresh failed"}), 500
     except Exception as e:
+        app.logger.error(f"Manual data refresh error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
+@app.route('/')
+def home():
+    return "Server is running!"
 if __name__ == "__main__":
     # Initial data load
     data_fetcher.fetch_latest_data()
+    print("app.py ran successfully")
     app.run(debug=True)
+

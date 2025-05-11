@@ -1,6 +1,9 @@
+#data_loader.py
 from kaggle.api.kaggle_api_extended import KaggleApi
 import pandas as pd
 import os
+from .models import Product
+from .db_session import Base,engine
 
 from sqlalchemy.orm import Session
 #from ml.model_trainer import ModelTrainer  # Import your actual model here
@@ -63,3 +66,4 @@ def load_kaggle_dataset(dataset_name, target_folder='data'):
     except Exception as e:
         print(f"Data loading failed: {e}")
         return None
+print("data_loader.py ran successfully")

@@ -60,27 +60,8 @@ function About() {
             </ul>
           </div>
           
-          <h3 className="text-2xl font-bold mb-6">Novelty of Approach</h3>
-          <div className="bg-white/10 p-6 rounded-lg">
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="mr-3 text-xl">★</span>
-                <span><strong>Consumer Behavior Integration</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 text-xl">★</span>
-                <span><strong>Real-Time Adaptability</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 text-xl">★</span>
-                <span><strong>AI-powered Negotiation Bots</strong></span>
-              </li>
-              <li className="flex items-start">
-                <span className="mr-3 text-xl">★</span>
-                <span><strong>Real-Time Pricing Transparency</strong></span>
-              </li>
-            </ul>
-          </div>
+         
+          
         </div>
       </div>
     </section>

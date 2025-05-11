@@ -72,3 +72,4 @@ class PricingDataFetcher:
                 save_to_database(df, table_name="pricing_raw")
 
                 return df
+print("pricing_data ran successfully")

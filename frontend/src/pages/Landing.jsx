@@ -1,67 +1,313 @@
+// LandingPage.js
+// LandingPage.js
 import React from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Features from '../components/Features';
-import HowItWorks from '../components/HowItWorks';
-import About from '../components/About';
-import Pricing from '../components/Pricing';
-import Testimonial from '../components/Testimonial';
-import Contact from '../components/Contact';
+import { Link } from 'react-scroll';
 import '../App.css';
 
 const LandingPage = () => {
+  // Handle form submissions
+  const handleFreeTrial = (e) => {
+    e.preventDefault();
+    // Open signup page
+    window.open('/signup', '_blank');
+  };
+
+  const handleGetStarted = (e) => {
+    e.preventDefault();
+    // Open signup page
+    window.open('/signup', '_blank');
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    // Handle contact form submission
+    alert('Message sent successfully!');
+  };
+
+  // Features data
+  const features = [
+    {
+      title: "Real-time Pricing Engine",
+      description: "Market Trend Analysis with dynamic adjustments based on real-time demand"
+    },
+    {
+      title: "Consumer Behavior Integration",
+      description: "Behavioral analytics that refine pricing using buying and return trends"
+    },
+    {
+      title: "Automated A/B Testing",
+      description: "Refine pricing strategies with data-driven testing and consumer behavior insights"
+    },
+    {
+      title: "Revenue Optimization",
+      description: "Comprehensive reports with predictive modeling for accurate demand forecasting"
+    },
+    {
+      title: "AI Negotiation Bots",
+      description: "Advanced AI-powered tools for transparent pricing negotiations"
+    },
+    {
+      title: "Real-Time Adaptability",
+      description: "Market-responsive pricing that syncs inventory for immediate updates"
+    }
+  ];
+
+  // How it works steps
+  const steps = [
+    {
+      number: "1",
+      title: "Input Pricing Data",
+      description: "Connect your existing pricing data and inventory systems"
+    },
+    {
+      number: "2",
+      title: "Apply Bayesian Optimization",
+      description: "Our AI analyzes market trends and consumer behavior"
+    },
+    {
+      number: "3",
+      title: "Generate Strategic Insights",
+      description: "Receive actionable pricing recommendations"
+    },
+    {
+      number: "4",
+      title: "Monitor & Optimize Continuously",
+      description: "Real-time adjustments keep you ahead of the competition"
+    }
+  ];
+
+  // Pricing plans (updated with $0 for free trial)
+  const plans = [
+    {
+      name: "Free Trial",
+      price: "$0",
+      period: "/month",
+      description: "Perfect for small businesses to try our platform",
+      features: [
+        "Real-time Pricing Engine",
+        "Basic Market Trend Analysis",
+        "Standard Reports",
+        "Email Support"
+      ],
+      cta: "Start Free Trial",
+      popular: false
+    },
+    {
+      name: "Professional",
+      price: "$299",
+      period: "/month",
+      description: "Ideal for growing businesses ready to optimize their pricing strategy",
+      features: [
+        "Everything in Free Trial",
+        "Automated A/B Testing",
+        "Revenue Optimization Reports",
+        "Behavioral Analytics",
+        "Priority Support"
+      ],
+      cta: "Get Started",
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "pricing",
+      description: "Full-featured solution for large businesses with complex pricing needs",
+      features: [
+        "Everything in Professional",
+        "Advanced Bayesian Optimization",
+        "AI Negotiation Bots",
+        "Custom Integration",
+        "Dedicated Account Manager"
+      ],
+      cta: "Contact Us",
+      popular: false
+    }
+  ];
+
   return (
-    <div className="font-sans scroll-smooth">
-      {/* NAVBAR + HERO */}
-      <div className="bg-gradient-to-b from-[#002b80] to-[#0073e6] text-white">
-        <Header />
-        <Hero />
-      </div>
+    <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* Header */}
+      <header>
+        <div className="container">
+          <nav>
+            <div className="logo">Profit Optic</div>
+            <div className="nav-links">
+              <Link to="features" smooth={true} duration={500} className="nav-link">Features</Link>
+              <Link to="how-it-works" smooth={true} duration={500} className="nav-link">How It Works</Link>
+              <Link to="pricing" smooth={true} duration={500} className="nav-link">Pricing</Link>
+              <Link to="contact" smooth={true} duration={500} className="nav-link">Contact</Link>
+            </div>
+            <button onClick={handleFreeTrial} className="cta-button">Start Free Trial</button>
+          </nav>
+        </div>
+      </header>
 
-      {/* FEATURES SECTION */}
-      <section className="bg-white py-20 px-5">
-        <Features />
-      </section>
+      <main style={{ flex: 1 }}>
+        {/* Hero Section */}
+        <section className="hero" id="home" style={{ padding: '150px 0' }}>
+          <div className="container">
+            <h1>Smarter Pricing Starts Here</h1>
+            <h2>Leverage Bayesian Optimization to stay ahead of market trends</h2>
+            <p>Profit Optic combines AI-powered pricing optimization with real-time market analysis to maximize your revenue and streamline your inventory management.</p>
+            <div className="hero-buttons">
+              <button onClick={handleFreeTrial} className="cta-button">Try Profit Optic Free</button>
+              <Link to="how-it-works" smooth={true} duration={500} className="secondary-button">Learn More</Link>
+            </div>
+          </div>
+        </section>
 
-      {/* HOW IT WORKS */}
-      <section className="bg-blue-50 py-20 px-5">
-        <HowItWorks />
-      </section>
+        {/* Features Section */}
+        <section className="section" id="features" style={{ padding: '80px 0' }}>
+          <div className="container">
+            <div className="section-title">
+              <h2>Powerful Features</h2>
+              <p>Our comprehensive suite of tools helps you optimize pricing strategies and boost revenue</p>
+            </div>
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <div className="feature-card" key={index}>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* ABOUT US – now more visible */}
-      <section className="bg-[#f0f8ff] py-20 px-5">
-        <About />
-      </section>
+        {/* How It Works */}
+        <section className="section" id="how-it-works" style={{ backgroundColor: '#f8fafc', padding: '80px 0' }}>
+          <div className="container">
+            <div className="section-title">
+              <h2>How It Works</h2>
+              <p>Simple steps to transform your pricing strategy with AI optimization</p>
+            </div>
+            <div className="steps">
+              {steps.map((step, index) => (
+                <div className="step" key={index}>
+                  <div className="step-number">{step.number}</div>
+                  <h4>{step.title}</h4>
+                  <p>{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* PRICING */}
-      <section className="bg-white py-20 px-5">
-        <Pricing />
-      </section>
+        {/* Pricing Section */}
+        <section className="section" id="pricing" style={{ padding: '80px 0' }}>
+          <div className="container">
+            <div className="section-title">
+              <h2>Pricing Plans</h2>
+              <p>Choose the perfect plan to optimize your pricing strategy and boost revenue</p>
+            </div>
+            <div className="pricing-grid">
+              {plans.map((plan, index) => (
+                <div className="pricing-card" key={index}>
+                  {plan.popular && <div className="popular-tag">Most Popular</div>}
+                  <h3>{plan.name}</h3>
+                  <div className="price">{plan.price} <span>{plan.period}</span></div>
+                  <p>{plan.description}</p>
+                  <ul className="pricing-features">
+                    {plan.features.map((feature, i) => (
+                      <li key={i}>{feature}</li>
+                    ))}
+                  </ul>
+                  {plan.cta === "Contact Us" ? (
+                    <Link to="contact" smooth={true} duration={500} className="cta-button" style={{ display: 'block', textAlign: 'center' }}>
+                      {plan.cta}
+                    </Link>
+                  ) : (
+                    <button onClick={plan.cta === "Start Free Trial" ? handleFreeTrial : handleGetStarted} 
+                            className="cta-button" 
+                            style={{ display: 'block', textAlign: 'center', width: '100%' }}>
+                      {plan.cta}
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      {/* TESTIMONIAL */}
-      <section className="bg-blue-50 py-20 px-5">
-        <Testimonial />
-      </section>
+        {/* Contact Section */}
+        <section className="section" id="contact" style={{ backgroundColor: '#f8fafc', padding: '80px 0' }}>
+          <div className="container">
+            <div className="section-title">
+              <h2>Contact Us</h2>
+              <p>Ready to boost your revenue with intelligent pricing? Contact us today to learn how Profit Optic can transform your business.</p>
+            </div>
+            <div className="contact-form">
+              <form onSubmit={handleContactSubmit}>
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" id="name" placeholder="Your name" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" placeholder="Your email" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="company">Company</label>
+                  <input type="text" id="company" placeholder="Your company" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message">Message</label>
+                  <textarea id="message" placeholder="Your message" required></textarea>
+                </div>
+                <button type="submit" className="cta-button" style={{ border: 'none', cursor: 'pointer', width: '100%' }}>Send Message</button>
+              </form>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '40px' }}>
+              <p>Or reach us directly:</p>
+              <p style={{ marginTop: '10px' }}>Email: info@profitoptic.com<br />Phone: +1 (555) 123-4567</p>
+            </div>
+          </div>
+        </section>
+      </main>
 
-      {/* CONTACT */}
-      <section className="bg-white py-20 px-5">
-        <Contact />
-      </section>
-
-      {/* FOOTER */}
-      <footer className="bg-[#1a1a1a] text-white py-5 text-center">
-        <p className="text-sm">&copy; 2025 PricePilot. All rights reserved.</p>
+      {/* Footer */}
+      <footer>
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-column">
+              <h3>Profit Optic</h3>
+              <p style={{ color: 'var(--gray)' }}>AI-powered pricing optimization for modern businesses</p>
+            </div>
+            <div className="footer-column">
+              <h3>Product</h3>
+              <ul>
+                <li><Link to="features" smooth={true} duration={500}>Features</Link></li>
+                <li><Link to="how-it-works" smooth={true} duration={500}>How It Works</Link></li>
+                <li><Link to="pricing" smooth={true} duration={500}>Pricing</Link></li>
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h3>Company</h3>
+              <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#blog">Blog</a></li>
+              </ul>
+            </div>
+            <div className="footer-column">
+              <h3>Support</h3>
+              <ul>
+                <li><Link to="contact" smooth={true} duration={500}>Contact</Link></li>
+                <li><a href="#documentation">Documentation</a></li>
+                <li><a href="#api-status">API Status</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="copyright">
+            &copy; {new Date().getFullYear()} Profit Optic. All rights reserved.
+          </div>
+        </div>
       </footer>
     </div>
   );
 };
 
 export default LandingPage;
-
-
-
-
-
 
 
 
