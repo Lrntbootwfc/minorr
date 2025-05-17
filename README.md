@@ -28,9 +28,7 @@ Backend:
 
 Node.js
 
-Express.js
-
-MongoDB (or your choice of DB)
+Python flask
 
 Machine Learning:
 
@@ -57,4 +55,4 @@ Dashboard: Once logged in, view the dashboard displaying product details, dynami
 
 Price Adjustment: Upload products and set pricing conditions for real-time pricing updates.
 
-Price Simulation: Use the simulator to visualize the potential impact of different pricing strategies before applying them
+
