@@ -24,13 +24,7 @@ logging.basicConfig(level=logging.INFO)
 model_path = os.path.join(os.path.dirname(__file__), 'ml/pricing_model.pkl')
 model = joblib.load(model_path)  # Kaggle data fetcher instance
 data_fetcher = PricingDataFetcher()
-# Schedule daily data updates
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=data_fetcher.fetch_latest_data, trigger="cron", hour=2)  # 2 AM daily
-scheduler.start()
 
-# Shut down scheduler when exiting app
-atexit.register(lambda: scheduler.shutdown())
 
 @app.route('/predict_price', methods=['POST'])
 def predict_price():
@@ -97,7 +91,14 @@ def home():
 if __name__ == "__main__":
     # Initial data load
     data_fetcher.fetch_latest_data()
-    print("app.py ran successfully")
+    # Schedule daily data updates
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(func=data_fetcher.fetch_latest_data, trigger="cron", hour=2)  # 2 AM daily
+    scheduler.start()
+
+# Shut down scheduler when exiting app
+    atexit.register(lambda: scheduler.shutdown())
+    #print("app.py ran successfully")
     port = int(os.environ.get("PORT", 5000))  # Use Render's assigned port or fallback to 5000
     app.run(host='0.0.0.0', port=port)
 
