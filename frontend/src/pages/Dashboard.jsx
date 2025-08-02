@@ -221,7 +221,7 @@ function Dashboard() {
       try {
         const productsWithPredictions = await Promise.all(
           productData.map(async (product) => {
-            const response = await axios.post('http://localhost:5000/api/predict_price', {
+            const response = await axios.post('https://minorr-klul.onrender.com/predict_price', {
               base_price: product.base_price,
               competitor_price: product.current_price,
               demand_level: product.inventory_status === "In Stock" ? 1.2 : 

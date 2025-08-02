@@ -18,10 +18,7 @@ import MLDashboard from './pages/MLDashboard';
 const App = () => {
   return (
     <>  <Router>
-      <UserProvider>
-  
-     
-     
+      <UserProvider> 
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/" element={ <Navbar />} />

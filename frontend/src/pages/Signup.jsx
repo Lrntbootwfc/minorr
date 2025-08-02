@@ -25,7 +25,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('https://minorr-klul.onrender.com/api/auth/register', formData);
 
       // 🟣 Store token & role
       localStorage.setItem('token', response.data.token);
