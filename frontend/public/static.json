@@ -1,4 +1,9 @@
 {
+"headers": {
+    "/**": {
+        "Cache-Control": "no-cache"
+    }
+},
 "routes": {
     "/**": "index.html"
 }
