@@ -125,12 +125,12 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor:'', backgroundImage: 'linear-gradient(to right,#c3ddf6, #63b3ed)',}}>
       {/* Header */}
       <header>
         <div className="container">
           <nav>
-            <div className="logo">Profit Optic</div>
+            <div className="logo" style={{color:'white'}}>Price Pilot</div>
             <div className="nav-links">
               <Link to="features" smooth={true} duration={500} className="nav-link">Features</Link>
               <Link to="how-it-works" smooth={true} duration={500} className="nav-link">How It Works</Link>
@@ -144,9 +144,9 @@ const LandingPage = () => {
 
       <main style={{ flex: 1 }}>
         {/* Hero Section */}
-        <section className="hero" id="home" style={{ padding: '150px 0' }}>
-          <div className="container">
-            <h1>Smarter Pricing Starts Here</h1>
+        <section className="hero" id="home" style={{ padding: '150px 0' , backgroundImage: 'linear-gradient(to right, #c3ddf6, #63b3ed)',}}>
+          <div className="container"> {/*yahan background color add krna hai */}
+            <h1 className='heading' style={{color:'teal-10000'}}>Smarter Pricing Starts Here</h1>
             <h2>Leverage Bayesian Optimization to stay ahead of market trends</h2>
             <p>Profit Optic combines AI-powered pricing optimization with real-time market analysis to maximize your revenue and streamline your inventory management.</p>
             <div className="hero-buttons">
@@ -175,7 +175,7 @@ const LandingPage = () => {
         </section>
 
         {/* How It Works */}
-        <section className="section" id="how-it-works" style={{ backgroundColor: '#f8fafc', padding: '80px 0' }}>
+        <section className="section" id="how-it-works" style={{ backgroundColor: '#f8fafc', backgroundImage: 'linear-gradient(to right, #c3ddf6, #63b3ed)', padding: '80px 0' }}>
           <div className="container">
             <div className="section-title">
               <h2>How It Works</h2>
@@ -213,7 +213,7 @@ const LandingPage = () => {
                     ))}
                   </ul>
                   {plan.cta === "Contact Us" ? (
-                    <Link to="contact" smooth={true} duration={500} className="cta-button" style={{ display: 'block', textAlign: 'center' }}>
+                    <Link to="contact" smooth={true} duration={500} className="cta-button" style={{ display: 'block', textAlign: 'center' ,}}>
                       {plan.cta}
                     </Link>
                   ) : (
@@ -230,7 +230,7 @@ const LandingPage = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="section" id="contact" style={{ backgroundColor: '#f8fafc', padding: '80px 0' }}>
+        <section className="section" id="contact" style={{ backgroundColor: '#f8fafc',backgroundImage: 'linear-gradient(to right, #c3ddf6, #63b3ed)', padding: '80px 0' }}>
           <div className="container">
             <div className="section-title">
               <h2>Contact Us</h2>

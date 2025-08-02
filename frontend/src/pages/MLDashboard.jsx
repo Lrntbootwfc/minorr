@@ -224,12 +224,15 @@ const MLDashboard = () => {
           ML Pricing Optimization Dashboard
         </h1>
 
+        
+
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all hover:scale-105">
-            <p className="text-gray-500 text-sm font-medium">Total Products</p>
+        
+          <div className="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all hover:scale-105 ">
+            <p className="text-gray-500 text-sm font-medium ">Total Products</p>
             <p className="text-3xl font-bold text-blue-600">{stats.totalProducts}</p>
-            <p className="text-xs text-gray-400 mt-1">+{Math.floor(stats.totalProducts/3)} today</p>
+            <p className="text-xs text-gray-400 mt-100">+{Math.floor(stats.totalProducts/3)} today</p>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-6 text-center transform transition-all hover:scale-105">
             <p className="text-gray-500 text-sm font-medium">Predictions Generated</p>
