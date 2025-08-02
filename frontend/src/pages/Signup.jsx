@@ -43,7 +43,7 @@ const Signup = () => {
     }
   };
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f1f5f9', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f1f5f9', minHeight: '100vh', maxWidth: '100%',display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div style={{ backgroundColor: 'white', padding: '30px', borderRadius: '10px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)', width: '400px', maxWidth: '100%' }}>
         <h2 style={{ fontSize: '2.5rem', color: '#003366', textAlign: 'center', marginBottom: '20px' }}>Create an Account</h2>
         <form onSubmit={handleSubmit}>

@@ -17,7 +17,7 @@ function Dashboard() {
       id: 1,
       category: "Electrical Instruments",
       name: "Digital Multimeter (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://cdn0.iconfinder.com/data/icons/build-repair/64/Repair-160-1024.png',
       base_price: 20.00,
       current_price: 18.00,
       inventory_status: "In Stock"
@@ -26,7 +26,8 @@ function Dashboard() {
       id: 2,
       category: "Electrical Instruments",
       name: "Clamp Meter (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img:'https://tse4.mm.bing.net/th?id=OIP.JQrzD-o_j0HQ2UWNPv0jugHaHa&pid=Api&P=0&h=180',
+
       base_price: 35.00,
       current_price: 32.50,
       inventory_status: "In Stock"
@@ -35,7 +36,7 @@ function Dashboard() {
       id: 3,
       category: "Electrical Instruments",
       name: "Oscilloscope (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/aFXy25qDxnY4Nn-Q9G_XZbS3KZqdltcI448JVWHeFSs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAwLzAwLzMxLzA3/LzM2MF9GXzMxMDcw/NF83cld4bEhSNmM4/SXdUR1FhTlBZck5C/eVY5QnlkZW8uanBn',
       base_price: 250.00,
       current_price: 239.99,
       inventory_status: "Low Stock"
@@ -44,7 +45,7 @@ function Dashboard() {
       id: 4,
       category: "Electrical Instruments",
       name: "Function Generator (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/-k-wljPUZq3G3VXVHh4Gic2fX5OKsZC6OJd7Z7CugjY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4y/LndlYmRhbWRiLmNv/bS8yMjB0aF9zbV9s/Z0Q2NnJPZEpDMDIu/cG5nPzE1Nzk3OTMw/NjA',
       base_price: 180.00,
       current_price: 175.00,
       inventory_status: "In Stock"
@@ -55,7 +56,7 @@ function Dashboard() {
       id: 5,
       category: "Clothing",
       name: "T-Shirt (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/fTu4fIpr_aMvRUpR3yuqAvmx20wWEuQgpFa9mbu2XFg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZS5obS5jb20vYXNz/ZXRzL2htLzdiLzE3/LzdiMTc0MjhkYzFk/YThkZjZiOGIwNTRm/ODcyOWI1OGJkOGQw/NmU2MGEuanBnP2lt/d2lkdGg9MTUzNg',
       base_price: 10.00,
       current_price: 10.00,
       inventory_status: "In Stock"
@@ -64,7 +65,7 @@ function Dashboard() {
       id: 6,
       category: "Clothing",
       name: "Hoodie (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/2Ldn2d8DERBNdFaTZZqZh2eoTzqxYJVQABKrSubuKaI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tYWdu/bGVucy5jb20vY2Ru/L3Nob3AvZmlsZXMv/MjRSNFcwMDIwNUZf/RkxBVExBWV8xUkVT/SVpFRF84MjkwOTg2/Ny02NDZjLTRmMjkt/OGQxOC00MmI1ZDU0/ZDg0MTMuanBnP3Y9/MTcyOTc5NzkwMCZ3/aWR0aD05Njg',
       base_price: 30.00,
       current_price: 29.99,
       inventory_status: "In Stock"
@@ -73,7 +74,7 @@ function Dashboard() {
       id: 7,
       category: "Clothing",
       name: "Denim Jeans (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/aFbPLUvyNRFHCqqDckv-tmbWisJEl9caTOOyNv4dwhM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTIy/Mjc5NjQ4L3Bob3Rv/L3BhaXItb2Ytd29t/ZW5zLWJsdWUtZGVu/aW0tamVhbnMuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXZj/U0FMQUEwTTdJMEFm/ZDFoTzQ0c3RZUU9U/X2NyWHVIOVZDNnRr/MXNxams9',
       base_price: 35.00,
       current_price: 32.00,
       inventory_status: "Low Stock"
@@ -82,7 +83,7 @@ function Dashboard() {
       id: 8,
       category: "Clothing",
       name: "Cap (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/U1zvGDS-xC2othA2ACW8WaOypli529i6aNjWRRQHUK0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDk3/NjAwNDczL3Bob3Rv/L2JsYWNrLWJhc2Vi/YWxsLWhhdC5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9ZXFO/YVAtTGZqXzNQSXh5/dzh1Wk9Oa0h2U3B6/eE4yTV9oRm51U2do/TW4wMD0',
       base_price: 15.00,
       current_price: 12.99,
       inventory_status: "In Stock"
@@ -93,7 +94,7 @@ function Dashboard() {
       id: 9,
       category: "Accessories",
       name: "Leather Backpack (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/baw-VOAlF5fTK13NUuAPppaA9QaYXogafkMfcOjhFq8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90aGVy/ZWFsbGVhdGhlcmNv/bXBhbnkuY29tL2Nk/bi9zaG9wL2ZpbGVz/L3RoZS1zdGFuZGFy/ZC1sZWF0aGVyLWxh/cHRvcC1iYWNrcGFj/ay1mb3ItbWVuXzku/anBnP3Y9MTc0MDQx/MTU4NyZ3aWR0aD01/MzM',
       base_price: 50.00,
       current_price: 45.00,
       inventory_status: "Low Stock"
@@ -102,7 +103,7 @@ function Dashboard() {
       id: 10,
       category: "Accessories",
       name: "Watch (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/JBmi28wbCQpXKTsJnQ3UEtY6Pt3y8HNFkv5fZIJceIM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTcx/NTg1MzkxL3Bob3Rv/L3dhdGNoLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1PdnFf/SFJ1dmk2XzNrR1R3/QWVJQVdPQ2k5dFlQ/MlRtbUY1bkdSeWtr/anFFPQ',
       base_price: 75.00,
       current_price: 69.99,
       inventory_status: "In Stock"
@@ -111,7 +112,7 @@ function Dashboard() {
       id: 11,
       category: "Accessories",
       name: "Sunglasses (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/vaBVQPhDd_VZGn5Eo9KbOOTTtZzSrHT1fu7A3zlXLBA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTU3/NDI0MjQ3L3Bob3Rv/L2Zhc2hpb25hYmxl/LXN1bmdsYXNzZXMu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PTRqMUxWTk5pendE/bDByVC1YZkxibEZE/UXU4V1NMS1lubkZu/QWYtT1RsQzg9',
       base_price: 25.00,
       current_price: 24.50,
       inventory_status: "Out of Stock"
@@ -120,7 +121,7 @@ function Dashboard() {
       id: 12,
       category: "Accessories",
       name: "Belt (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://media.istockphoto.com/id/1253001088/photo/indian-made-leather-waist-belts-with-adjustable-buckle-on.webp?a=1&b=1&s=612x612&w=0&k=20&c=k6jAywZ-mBtEfHnzxbUZ_wM_rBGx4p9ZphvYI9kN2Xs=',
       base_price: 18.00,
       current_price: 15.99,
       inventory_status: "In Stock"
@@ -131,7 +132,7 @@ function Dashboard() {
       id: 13,
       category: "Home & Living",
       name: "Table Lamp (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img:  'https://imgs.search.brave.com/p_7fNwXCVcaFBz2Kdj1N9cOgrVt3kmVAUEwfC0dutMY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM1/NDU4NTI0MC9waG90/by9ibGFjay10YWJs/ZS1sYW1wLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1XVXI1/OXZjYkZNZEtaZmRa/UTlsYzZBMXR4SUo4/TEVGSndPTGFycDR3/UGl3PQ',
       base_price: 30.00,
       current_price: 32.00,
       inventory_status: "Out of Stock"
@@ -140,7 +141,7 @@ function Dashboard() {
       id: 14,
       category: "Home & Living",
       name: "Cushion Cover (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/TqqN06iYbFmZG0NHh00UjDnhmQAMml_dfuZPNO4AALw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YW5va2hpdXNhLmNv/bS9jZG4vc2hvcC9m/aWxlcy90dXJ0bGVf/ZG92ZV9taWxsaWNl/bnRfY3VzaGlvbl8w/MzE2XzI4MHhAMngu/anBnP3Y9MTY4ODI0/ODUzNw',
       base_price: 12.00,
       current_price: 10.99,
       inventory_status: "In Stock"
@@ -149,7 +150,7 @@ function Dashboard() {
       id: 15,
       category: "Home & Living",
       name: "Desk Organizer (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/Je5TElp2FmAZwpWJJmyMK_p1CsLjtaD_1CV4fRq0B7g/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9taW5k/cmVhZGVycHJvZHVj/dHMuY29tL2Nkbi9z/aG9wL3Byb2R1Y3Rz/LzEwQ0FCTUVTSC1C/TEtfMDEuanBnP3Y9/MTY4MDE5ODUzMiZ3/aWR0aD01MzM',
       base_price: 22.00,
       current_price: 19.99,
       inventory_status: "Low Stock"
@@ -158,7 +159,7 @@ function Dashboard() {
       id: 16,
       category: "Home & Living",
       name: "Wall Clock (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/K7992R4sLG_VFUDz7R6qGhLyIsGAizw6-adjURBtk3I/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9weXhp/cy5ueW1hZy5jb20v/djEvaW1ncy8xYzEv/OTdiLzZlOWU3N2Q1/NTFlNmMyMWU5OGY5/NDIwYTQzMmYxM2Q1/M2EucnNxdWFyZS53/NjAwLmpwZw',
       base_price: 25.00,
       current_price: 23.99,
       inventory_status: "In Stock"
@@ -169,7 +170,8 @@ function Dashboard() {
       id: 17,
       category: "Kitchen",
       name: "Saucepan (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/ttSppyIvnNl0yQ_mjA3aPF22uPLwOFv9QtDTrvn1Nb4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzEzLzYwLzc2LzEy/LzM2MF9GXzEzNjA3/NjEyNjdfdzhJWXV5/dTZvR2tTUVZMSHZq/b0RmVjdSZVc0NG1K/UzAuanBn',
+
       base_price: 22.00,
       current_price: 23.00,
       inventory_status: "In Stock"
@@ -178,7 +180,8 @@ function Dashboard() {
       id: 18,
       category: "Kitchen",
       name: "Knife Set (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/khIlY9XVr12k5Z9dqpd-lXSxBpqb0aicC_PFpFN7vKA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Zm9vZGFuZHdpbmUu/Y29tL3RobWIvazNj/VkJlVGp3X1M1NDVC/UW5na1J6YXYwNGZz/PS9maXQtaW4vMTUw/MHgxMDAwL2ZpbHRl/cnM6bm9fdXBzY2Fs/ZSgpOm1heF9ieXRl/cygxNTAwMDApOnN0/cmlwX2ljYygpL3Bh/dWRpbi1raXRjaGVu/LWtuaWZlLXNldC04/MzVjYmU3YmY4M2I0/YTI3YWFkMmRiZWJi/OTE3NzllYy5qcGc',
+      
       base_price: 45.00,
       current_price: 42.99,
       inventory_status: "In Stock"
@@ -187,7 +190,7 @@ function Dashboard() {
       id: 19,
       category: "Kitchen",
       name: "Coffee Maker (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/4VKKGmS0cM5zsxBvbDNmxzeupiOj_veWst5CUJD27V4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTU5/MjkyODc4L3Bob3Rv/L2NvZmZlZS1tYWtl/ci5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9U3BzeURVWGRB/VDJwc1A3WFVqT0R1/aThYVDMzRVFKYlJv/clJVODFJQXNEbz0',
       base_price: 60.00,
       current_price: 55.00,
       inventory_status: "Low Stock"
@@ -196,7 +199,7 @@ function Dashboard() {
       id: 20,
       category: "Kitchen",
       name: "Blender (T-BMC)",
-      img: '/api/placeholder/100/100',
+      img: 'https://imgs.search.brave.com/TyykcWZQ-XRbR325Wtfa94IfT7HcBXpI1PLRLYzFoyk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAwLzM1LzE2Lzc2/LzM2MF9GXzM1MTY3/NjA3XzNUNkZMaVlI/TXZDS0wxUElkSmZ6/dVA4ek5yd2lIQjFC/LmpwZw',
       base_price: 40.00,
       current_price: 38.99,
       inventory_status: "In Stock"
@@ -218,7 +221,7 @@ function Dashboard() {
       try {
         const productsWithPredictions = await Promise.all(
           productData.map(async (product) => {
-            const response = await axios.post('http://localhost:5000/predict_price', {
+            const response = await axios.post('http://localhost:5000/api/predict_price', {
               base_price: product.base_price,
               competitor_price: product.current_price,
               demand_level: product.inventory_status === "In Stock" ? 1.2 : 
@@ -229,7 +232,9 @@ function Dashboard() {
             
             return {
               ...product,
-              suggested_price: response.data.prediction
+              suggested_price:product.inventory_status === "Out of Stock"
+    ? "Out of Stock"
+              :response.data.prediction
             };
           })
         );
@@ -241,7 +246,8 @@ function Dashboard() {
         // Fallback to mock data if API fails
         const mockPredictions = productData.map(p => ({
           ...p,
-          suggested_price: p.base_price * (p.inventory_status === "In Stock" ? 0.95 : 
+          suggested_price: p.inventory_status === "Out of Stock"? 0.0
+  :p.base_price * (p.inventory_status === "In Stock" ? 0.95 : 
                           p.inventory_status === "Low Stock" ? 1.05 : 1.1)
         }));
         setProducts(mockPredictions);
@@ -295,7 +301,8 @@ function Dashboard() {
       minHeight: '100vh',
       width: '100vw',
       overflowX: 'hidden',
-      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+      fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+      backgroundColor:"#ebf8ff"
     }}>
       {/* Sidebar - Categories */}
       <div style={{
@@ -366,7 +373,8 @@ function Dashboard() {
             backgroundColor: 'white',
             borderRadius: '8px',
             boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-            overflow: 'auto'
+            overflow: 'auto',
+            color:'black'
           }}>
             <table style={{
               width: '100%',
@@ -434,11 +442,16 @@ function Dashboard() {
                     <td style={{ padding: '15px' }}>${product.current_price.toFixed(2)}</td>
                     <td style={{ 
                       padding: '15px',
-                      color: product.suggested_price < product.current_price ? '#2ecc71' : 
-                            product.suggested_price > product.current_price ? '#e74c3c' : '#3498db',
+                      color:  typeof product.suggested_price === 'number'
+                      ?(product.suggested_price < product.current_price ? '#2ecc71' 
+                            :product.suggested_price > product.current_price ? '#e74c3c' : '#3498db'):'#7f8c8d',
                       fontWeight: 'bold'
                     }}>
-                      ${product.suggested_price.toFixed(2)}
+                    {typeof product.suggested_price === 'number'
+                    ? `$${product.suggested_price.toFixed(2)}`
+                    : product.suggested_price
+                    }
+  
                     </td>
                   </tr>
                 ))}

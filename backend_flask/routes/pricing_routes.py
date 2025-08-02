@@ -70,4 +70,4 @@ def ml_predict_price():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-print("successfull running till the end")
+print("successful running till the end, pricing_routes")

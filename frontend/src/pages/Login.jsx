@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Fake login: checking if email and password are correct
-    if (email === 'test@example.com' && password === 'password123') {
+    if ((email === 'test@example.com' && password === 'password123')||(email =='divyasharmagdscoist@gmail.com' && password =='apple123ball')) {
       login({ email: 'test@example.com', name: 'John Doe' });
       console.log("Login successful. Redirecting to dashboard..."); 
       navigate('/dashboard');
@@ -81,6 +81,7 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '6px',
     fontSize: '16px',
+    color:'#000000',
   },
   button: {
     width: '100%',
