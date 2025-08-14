@@ -53,6 +53,6 @@ Login: Access the platform via the login page. Use Google login for easy authent
 
 Dashboard: Once logged in, view the dashboard displaying product details, dynamic pricing stats, and real-time updates.
 
-Price Adjustment: Upload products and set pricing conditions for real-time pricing updates.
+Price Adjustment: Upload products and set pricing conditions for real-time pricing updates..
 
 
